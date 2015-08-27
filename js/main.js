@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  var demands = {},
+    entries = {};
 /**
  * Finds all the extra-load classes from the DOM including newly created ones.
  * @return {list} Extra load values.
@@ -50,18 +52,38 @@ $(document).ready(function () {
     return 6000 + ((range - 12000) * 0.4);
   }
 
+/**
+ * Takes in an array of extras, will map over that to produce an array of only
+ * the "greater than 1500" demands multiplied by 25% and then added together
+ * with reduce
+ * @param  {array} extras only really care about demands above 1500W
+ * @return {number}        total demand from the extra loads
+ */
+  function calExtras(extras) {
+    return extras.map(function (extra) {
+      return extra > 1500 ? extra * 0.25 : 0;
+    }).reduce(function (prev, curr) {
+      return prev + curr;
+    });
+  }
+
   function checkAnswer() {
-    var area = $('#area').val(),
-      range = $('#range').val(),
-      heat = $('#heat').val(),
-      extras = getExtraLoads(),
-      ac = $('#ac').val(),
-      suite_voltage = $('#volts').val(),
-      suite_phase = $('#phase').val()
-      demands = [];
-    console.log(calArea(area));
+    entries = {
+      area: $('#area').val(),
+      range: $('#range').val(),
+      heat: $('#heat').val(),
+      extras: getExtraLoads(),
+      ac: $('#ac').val(),
+      suite_voltage: $('#volts').val(),
+      suite_phase: $('#phase').val(),
+    };
+    console.log(entries.area);
     // add each total to the demands array
-    demands.push(calArea(area))
+    demands.area = calArea(entries.area);
+    demands.range = calRange(entries.range);
+    //demands.heat = calHeat(entries.heat);
+    demands.extras = calExtras(entries.extras);
+    console.log(demands.extras);
 
   }
 
@@ -70,7 +92,7 @@ $(document).ready(function () {
     if (this.area === undefined) {  // will be undefined if checkAnswer not run
       alert("You need to try an answer first!");
     }
-  };
+  }
 
   function calculateSubTotal() {
 
