@@ -25,8 +25,8 @@
 
   <div class="row">
     <!-- Main input -->
-  <form action="index.html" method="POST" role="form">
-    <legend>Equipment Demands</legend>
+  <form role="form">
+    <legend>Unit Area / Equipment Demands</legend>
 
     <div class="form-group">
       <label for="area" class="col-sm-2">Area (m2)</label>
@@ -35,9 +35,9 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="range" class="col-sm-2">Range kW</label>
+      <label for="range" class="col-sm-2">Range W</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="range" placeholder="12">
+        <input type="text" class="form-control" id="range" placeholder="12000">
       </div>
     </div>
     <div class="form-group">
@@ -46,12 +46,22 @@
         <input type="text" class="form-control" id="heat" placeholder="1500">
       </div>
     </div>
-    <div class="form-group">
-      <label for="extra-load" class="col-sm-2">Extra Loads kW</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="extra-load" placeholder="4">
+    <div class="extra-loads-wrapper">
+      <div class="form-group">
+        <label for="extra-load" class="col-sm-2">Extra Load W</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control extra-load" placeholder="4000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="extra-load" class="col-sm-2">Extra Load W</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control extra-load" placeholder="1800">
+        </div>
       </div>
     </div>
+    <button type="button" class='btn btn-info' id="add-load">
+      Add Extra Load</button>
     <div class="form-group">
       <label for="a-c" class="col-sm-2">A/C W</label>
       <div class="col-sm-10">
@@ -72,9 +82,24 @@
           placeholder="1 or 3">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   </div> <!-- End form row -->
+  <div class="row well">
+      <form role="form">
+
+  <button type="button" class="btn btn-primary pull-left" id="check">
+    Check</button>
+  <div class="col-sm-3">
+    <input type="text" class="form-control" placeholder="Your answer to check">
+  </div>
+  <button type="button" class="btn btn-warning pull-right" id="answer">
+    Answer</button>
+  <div class="col-sm-3 pull-right">
+    <input type="text" class="form-control" readonly="readonly">
+  </div>
+
+  </form>
+  </div>
 
 </div> <!-- End Container for body -->
 
@@ -85,8 +110,8 @@
 
 
 
-
+  <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
