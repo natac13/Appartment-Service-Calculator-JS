@@ -8,15 +8,20 @@
   able to input same answer... do this with logging each answer in an array, or
   object might be better to use a for in loop.
   - finish owner panel input and finial calculation
+  - put message about gas range vs electric range and not to worry
 
  */
 
 
 $(document).ready(function () {
-
+// initialize main variables
+// demands is an object to store the values after running through the CEC Rules
+// entries is an object to store the input value from the user
+// answer is well the answer!!
   var demands = {},
     entries = {},
     answer;
+
 /**
  * Finds all the extra-load classes from the DOM including newly created ones.
  * @return {list} Extra load values.
@@ -41,7 +46,7 @@ $(document).ready(function () {
 
 /**
  * Given an area will calculate rule 8-202(1)(a)(i)(ii)(iii)
- * @param  {number} area From the input field #area
+ * @param  {string} area From the input field #area
  * @return {number}      demand based off the area.
  */
   function calArea(area) {
@@ -54,7 +59,10 @@ $(document).ready(function () {
 
 /**
  * Given a range in watts will calculate rule 8-202(1)(v)
- * @param  {number} range From the input field #range
+ * Because this will always return 6000 W even if the demand is 0 which is the
+ * case for a gas range. Due to 8-202(1)(a)(vi)(B) in the event of a gas range
+ * there is still a need to add 6000 W for future use!
+ * @param  {string} range From the input field #range
  * @return {number}       demand based off the range.
  */
   function calRange(range) {
@@ -66,17 +74,26 @@ $(document).ready(function () {
  * Takes in an array of extras, will map over that to produce an array of only
  * the "greater than 1500" demands multiplied by 25% and then added together
  * with reduce
+ * CEC Rule 8-202(1)(a)(vi)
  * @param  {array} extras only really care about demands above 1500W
  * @return {number}        total demand from the extra loads
  */
   function calExtras(extras) {
     return extras.map(function (extra) {
+      extra = parseInt(extra, 10);
       return extra > 1500 ? extra * 0.25 : 0;
     }).reduce(function (prev, curr) {
       return prev + curr;
     });
   }
 
+/**
+ * Given the heat and A/C demands will determine which to choose based off of
+ * CEC Rule 8-202(1)(a)(iv)
+ * @param  {string} heat the demands of the heat
+ * @param  {string} ac   the demand of the a/c
+ * @return {number}      total demand
+ */
   function calHeatAC(heat, ac) {
     heat = parseInt(heat, 10);
     ac = parseInt(ac, 10);
@@ -90,7 +107,7 @@ $(document).ready(function () {
     voltage = parseInt(voltage, 10);
     phase = parseInt(phase, 10);
     return phase === 1 ? (wattage / voltage).toFixed(2) : (wattage /
-        (Math.sqrt(3) * voltage)).toFixed(2)
+        (Math.sqrt(3) * voltage)).toFixed(2);
   }
 
   function checkAnswer() {
@@ -127,7 +144,7 @@ $(document).ready(function () {
     console.log(answer);
 
     // check for right answer then do css magic!!
-    if( parseInt(answer, 10) === parseInt(entries.user_answer, 10)) {
+    if (parseInt(answer, 10) === parseInt(entries.user_answer, 10)) {
       alert("YEah buddy!");
     }
   }
