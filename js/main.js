@@ -12,6 +12,14 @@
 
  */
 
+/**
+ *
+ * Will NOT be changed anymore as I want to explore ES6 syntax
+ *
+ *
+ */
+
+
 
 $(document).ready(function () {
 // initialize main variables
@@ -111,15 +119,16 @@ $(document).ready(function () {
   }
 
   function checkAnswer() {
+     var $unit_form = $('#unit_demands')
     entries = {
-      area: $('#area').val(),
-      range: $('#range').val(),
-      heat: $('#heat').val(),
+      area: $unit_form.find('#area').val(),
+      range: $unit_form.find('#range').val(),
+      heat: $unit_form.find('#heat').val(),
       extras: getExtraLoads(),
-      ac: $('#a-c').val(),
-      suite_voltage: $('#suite-voltage').val(),
-      suite_phase: $('#suite-phase').val(),
-      user_answer: $('#user-answer').val(),
+      ac: $unit_form.find('#a-c').val(),
+      suite_voltage: $unit_form.find('#suite-voltage').val(),
+      suite_phase: $unit_form.find('#suite-phase').val(),
+      user_answer: $('#suite_answer').find('#user-answer').val(),
     };
 
     // add each total to the demands array

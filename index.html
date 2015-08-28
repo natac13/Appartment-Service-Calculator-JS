@@ -25,81 +25,165 @@
 
   <div class="row">
     <!-- Main input -->
-  <form role="form">
-    <legend>Unit Area / Equipment Demands</legend>
+    <form role="form" id="unit_demands" autocomplete="on">
+      <legend>Unit Area / Equipment Demands 8-202(1)</legend>
 
-    <div class="form-group">
-      <label for="area" class="col-sm-2">Area (m2)</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="area" placeholder="79">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="range" class="col-sm-2">Range W</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="range" placeholder="12000">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="heat" class="col-sm-2">Heat W</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="heat" placeholder="1500">
-      </div>
-    </div>
-    <div class="extra-loads-wrapper">
       <div class="form-group">
-        <label for="extra-load" class="col-sm-2">Extra Load W</label>
+        <label for="area" class="col-sm-2">Area (m2)</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control extra-load" placeholder="4000">
+          <input type="text" class="form-control" id="area" placeholder="79">
         </div>
       </div>
       <div class="form-group">
-        <label for="extra-load" class="col-sm-2">Extra Load W</label>
+        <label for="range" class="col-sm-2">Range W</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control extra-load" placeholder="1800">
+          <input type="text" class="form-control" id="range" placeholder="12000">
         </div>
       </div>
-    </div>
-    <button type="button" class='btn btn-info' id="add-load">
-      Add Extra Load</button>
-    <div class="form-group">
-      <label for="a-c" class="col-sm-2">A/C W</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="a-c" placeholder="0">
+      <div class="form-group">
+        <label for="heat" class="col-sm-2">Heat W</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="heat" placeholder="1500">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="suite-voltage" class="col-sm-2">Suite Voltage V</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="suite-voltage"
-          placeholder="208">
+      <div class="extra-loads-wrapper">
+        <div class="form-group">
+          <label for="extra1" class="col-sm-2">Extra Load W</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control extra-load" id="extra1"
+              placeholder="4000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="extra2" class="col-sm-2">Extra Load W</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control extra-load" id="extra2"
+              placeholder="1800">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="suite-phase" class="col-sm-2">Suite Phase</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="suite-phase"
-          placeholder="1 or 3">
+      <button type="button" class='btn btn-info' id="add-load">
+        Add Extra Load</button>
+      <div class="form-group">
+        <label for="a-c" class="col-sm-2">A/C W</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="a-c" placeholder="0">
+        </div>
       </div>
-    </div>
-  </form>
+      <div class="form-group">
+        <label for="suite-voltage" class="col-sm-2">Suite Voltage V</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="suite-voltage"
+            placeholder="208">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="suite-phase" class="col-sm-2">Suite Phase</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="suite-phase"
+            placeholder="1 or 3">
+        </div>
+      </div>
+    </form>
   </div> <!-- End form row -->
+
   <div class="row well">
-      <form role="form">
-
-  <button type="button" class="btn btn-primary pull-left" id="check">
-    Check</button>
-  <div class="col-sm-3">
-    <input type="text" class="form-control" placeholder="Your answer to check"
-      id="user-answer">
+    <form role="form" id="suite_answer">
+      <div class="col-sm-1 ">
+        <button type="button" class="btn btn-primary" id="check">
+          Check
+        </button>
+      </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form-control" id="user-answer"
+          placeholder="Suite Ampacity (2 deciaml places)">
+      </div>
+      <div class="col-sm-1 ">
+        <button type="button" class="btn btn-warning" id="answer">
+          Answer
+        </button>
+      </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form-control" readonly="readonly">
+      </div>
+    </form>
+    <div class="col-sm-4">
+        congrats
+    </div>
   </div>
-  <button type="button" class="btn btn-warning pull-right" id="answer">
-    Answer</button>
-  <div class="col-sm-3 pull-right">
-    <input type="text" class="form-control" readonly="readonly">
-  </div>
 
-  </form>
+  <div class="row">
+    <form role="form">
+      <legend>Owner Area Demands 8-202(4)</legend>
+
+      <div class="form-group">
+        <label for="mis-loads" class="col-sm-2">Miscellaneous Loads</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="mis-loads"
+            placeholder="22000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="parking" class="col-sm-2">Parking Stalls Demand</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="parking"
+            placeholder="18">
+        </div>
+      </div>
+
+      <div class="col-sm-2" id="parking-wrapper">
+        <div class="radio">
+          <label for="res"><input type="radio" name="parking" id="res"
+            value="restriced">Restricted
+          </label>
+        </div>
+        <div class="radio">
+          <label for="unres"><input type="radio" name="parking" id="unres"
+            value="unrestriced">Unrestricted
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="owner-heat" class="col-sm-2">Owner's Heating</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="owner-heat"
+            placeholder="22000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="other-loads" class="col-sm-2">Other Loads</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="other-loads"
+            placeholder="22000">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row well">
+    <form role="form" id="owner_answer">
+      <div class="col-sm-1 ">
+        <button type="button" class="btn btn-primary" id="owner-check">
+          Check
+        </button>
+      </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form-control" id="owner-user-answer"
+        placeholder="Owners Ampacity (2 decimal places)">
+      </div>
+      <div class="col-sm-1 ">
+        <button type="button" class="btn btn-warning" id="owner-answer">
+          Answer
+        </button>
+      </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form-control" readonly="readonly">
+      </div>
+    </form>
+    <div class="col-sm-4">
+        congrats
+    </div>
   </div>
 
 </div> <!-- End Container for body -->
@@ -107,6 +191,6 @@
 
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.complied.js"></script>
 </body>
 </html>
