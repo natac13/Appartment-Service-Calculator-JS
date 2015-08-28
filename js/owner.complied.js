@@ -12,7 +12,7 @@ $(document).ready(function () {
     */
     var demands = {},
         entries = {},
-        $owner_form = $('#owner-form'),
+        $owner_form = $('#owner-button-form'),
         wrong_answers = new Set(),
         answer = undefined,
 
@@ -20,7 +20,19 @@ $(document).ready(function () {
     $check = $('#owner-check'),
         $answer = $('#owner-answer');
 
+    function calculator() {
+      entries.misc = $('#mis-loads').val();
+      entries.parking = $('#parking-demand').val();
+      // will be restricted or unrestricted
+      entries.res_unres = $('#parking-wrapper').find('input[name=parking]:checked').val();
+      entries.heat = $('#owner-heat').val();
+      entries.other = $('#other-loads').val();
+      console.log(entries);
+    }
+
     function checkAnswer() {
+      calculator();
+
       console.log("Test");
     }
 
