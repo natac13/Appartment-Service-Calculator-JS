@@ -2,11 +2,7 @@
 
   TODO:
   - Make button shake like electrical current
-  - disable check and answer buttons if o value put it the user-answer field
   - do something better than an alert for right answer.
-  - maybe have to check 3 times before get answer. with addition of not being
-  able to input same answer... do this with logging each answer in an array, or
-  object might be better to use a for in loop.
   - finish owner panel input and finial calculation
   - put message about gas range vs electric range and not to worry
 
@@ -34,7 +30,12 @@ $(document).ready(function () {
         entries = {},
         $unit_form = $('#unit_demands'),
         wrong_answers = new Set(),
-        answer = undefined;
+        answer = undefined,
+
+    // get buttons
+    $check = $('#check'),
+        $answer = $('#answer'),
+        $add_load = $('#add-load');
 
     /**
      * Finds all the extra-load classes from the DOM including newly created ones.
@@ -161,7 +162,7 @@ $(document).ready(function () {
       demands.range = calRange(entries.range);
       //console.log("range " + demands.range);
       demands.extras = calExtras(entries.extras);
-      console.log("extra " + demands.extras);
+      //console.log("extra " + demands.extras);
       demands.subTotal = demands.area + demands.range + demands.extras;
       //console.log("sub " + demands.subTotal);
       demands.heat_ac = calHeatAC(entries.heat, entries.ac);
@@ -180,31 +181,33 @@ $(document).ready(function () {
      * @return {null}
      */
     function checkAnswer() {
-      answer = parseInt(calculator(), 10);
+      answer = calculator();
       var user_attempt = parseInt(entries.user_answer, 10);
       console.log(answer);
       // check for right answer then do css magic!!
-      if (answer === user_attempt) {
-        alert("YEah buddy!");
+      if (parseInt(answer, 10) === user_attempt) {
+        alert("YEAH BUDDY!! YOU GOT IT!");
+        // add css class to style as well
         return true;
       }
 
       wrong_answers.add(user_attempt);
       console.log(wrong_answers);
+      console.log(wrong_answers.size);
     }
 
     function giveAnswer() {
       // display answer
+      var $dis_node = $('#suite_answer').find('#display-suite-answer');
       if (wrong_answers.size < 3) {
         // tried at least 3 different times
-        alert("You need to try an answer first!");
+        $dis_node.val("You need to try an answer first!");
+        return false;
       }
+      $dis_node.val(answer);
+      // add css class to the element to show a failure
     }
 
-    // get buttons
-    var $check = $('#check'),
-        $answer = $('#answer'),
-        $add_load = $('#add-load');
     // on clicks
     $check.click(checkAnswer);
     $answer.click(giveAnswer);

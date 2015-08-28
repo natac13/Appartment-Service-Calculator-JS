@@ -24,7 +24,8 @@
   </div> <!-- End header row -->
 
   <div class="row">
-    <!-- Main input -->
+<!--  ##############            Main input             #####################-->
+
     <form role="form" id="unit_demands" autocomplete="on">
       <legend>Unit Area / Equipment Demands 8-202(1)</legend>
 
@@ -104,16 +105,19 @@
         </button>
       </div>
       <div class="col-sm-3 ">
-        <input type="text" class="form-control" readonly="readonly">
+        <input type="text" class="form-control" readonly="readonly"
+          id="display-suite-answer">
       </div>
     </form>
-    <div class="col-sm-4">
-        congrats
+    <div class="col-sm-4" id="congrats1">
     </div>
   </div>
 
+
+<!--       ##############  Start of the Owners form ##############        -->
+
   <div class="row">
-    <form role="form">
+    <form role="form" id="owner-form">
       <legend>Owner Area Demands 8-202(4)</legend>
 
       <div class="form-group">
@@ -162,7 +166,7 @@
     </form>
   </div>
   <div class="row well">
-    <form role="form" id="owner_answer">
+    <form role="form" id="owner_form">
       <div class="col-sm-1 ">
         <button type="button" class="btn btn-primary" id="owner-check">
           Check
@@ -178,7 +182,8 @@
         </button>
       </div>
       <div class="col-sm-3 ">
-        <input type="text" class="form-control" readonly="readonly">
+        <input type="text" class="form-control" readonly="readonly"
+          id="display-owner-answer">
       </div>
     </form>
     <div class="col-sm-4">
@@ -192,5 +197,6 @@
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.complied.js"></script>
+  <script src="js/owner.complied.js"></script>
 </body>
 </html>
