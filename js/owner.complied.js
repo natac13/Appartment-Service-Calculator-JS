@@ -119,6 +119,7 @@ $(document).ready(function () {
       entries.voltage = $('#owner-voltage').val();
       entries.phase = $('#owner-phase').val();
       entries.install = $('#install-wrapper').find('input[name=install]:checked').val();
+      entries.user_answer = $('#owner-user-answer').val();
       console.log(entries);
 
       demands.misc = calMisc(entries.misc);
@@ -126,13 +127,22 @@ $(document).ready(function () {
       demands.heat = calHeat(entries.heat);
       demands.other = calMisc(entries.other);
       total = sumDemands(demands);
-      console.log("total " + total);
-      console.log(calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
-      calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install);
+      console.log("total " + calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
+      return calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install);
     }
 
     function checkAnswer() {
-      calculator();
+      answer = calculator();
+      var user_attempt = parseInt(entries.user_answer, 10);
+      if (parseInt(answer, 10) === user_attempt) {
+        alert("YEAH BUDDY!! YOU GOT IT!");
+        // add css class to style as well
+        return true;
+      }
+
+      wrong_answers.add(user_attempt);
+      console.log(wrong_answers);
+      console.log(wrong_answers.size);
 
       console.log("Test");
     }
