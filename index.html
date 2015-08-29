@@ -223,7 +223,81 @@ air</p>
     <div class="col-sm-4" id="congrat2">
 
     </div>
+  </div> <!-- end of owners row -->
+
+<!--       ##############  Start of the Total form ##############        -->
+
+  <div class="row">
+    <form role="form" id="total-form">
+      <legend>Main Service 8-202(3)</legend>
+
+      <div class="form-group unit-info">
+        <label for="unit-demand-1" class="col-sm-2">Unit Subtotal Demand</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-demand-1"
+            placeholder="15000" name="demand">
+        </div>
+        <label for="unit-count-1" class="col-sm-2">Unit Count</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-count-1"
+            placeholder="3" name="count">
+        </div>
+      </div>
+      <div class="form-group unit-info">
+        <label for="unit-demand-2" class="col-sm-2">Unit Subtotal Demand</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-demand-2"
+            placeholder="25000" name="demand">
+        </div>
+        <label for="unit-count-2" class="col-sm-2">Unit Count</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-count-2"
+            placeholder="4" name="count">
+        </div>
+      </div>
+      <div class="form-group unit-info">
+        <label for="unit-demand-3" class="col-sm-2">Unit Subtotal Demand</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-demand-3"
+            placeholder="10000" name="demand">
+        </div>
+        <label for="unit-count-3" class="col-sm-2">Unit Count</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="unit-count-3"
+            placeholder="2" name="count">
+        </div>
+      </div>
+
+
+
+    </form>
+
   </div>
+
+  <div class="row well">
+      <form role="form" id="total-answer">
+        <div class="col-sm-1 ">
+          <button type="button" class="btn btn-primary" id="total-check">
+            Check
+          </button>
+        </div>
+        <div class="col-sm-3 ">
+          <input type="text" class="form-control" id="total-user-answer"
+            placeholder="Total">
+        </div>
+        <div class="col-sm-1 ">
+          <button type="button" class="btn btn-warning" id="total-answer">
+            Answer
+          </button>
+        </div>
+        <div class="col-sm-3 ">
+          <input type="text" class="form-control" readonly="readonly"
+            id="display-total-answer">
+        </div>
+      </form>
+      <div class="col-sm-4" id="congrats3">
+      </div>
+    </div>
 
 </div> <!-- End Container for body -->
 
@@ -232,5 +306,6 @@ air</p>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.complied.js"></script>
   <script src="js/owner.complied.js"></script>
+  <script src="js/total.complied.js"></script>
 </body>
 </html>
