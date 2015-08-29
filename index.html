@@ -129,23 +129,22 @@
       </div>
 
       <div class="form-group">
-        <label for="parking" class="col-sm-2">Parking Stalls Demand</label>
-        <div class="col-sm-8">
+        <label for="parking" class="col-sm-2">Number of Parking Stalls</label>
+        <div class="col-sm-6">
           <input type="text" class="form-control" name="parking"
             placeholder="18" id="parking-demand">
         </div>
-      </div>
-
-      <div class="col-sm-2" id="parking-wrapper">
-        <div class="radio">
-          <label for="res"><input type="radio" name="parking" id="res"
-            value="restriced">Restricted
-          </label>
-        </div>
-        <div class="radio">
-          <label for="unres"><input type="radio" name="parking" id="unres"
-            value="unrestriced">Unrestricted
-          </label>
+        <div class="col-sm-4" id="parking-wrapper">
+          <div class="radio col-sm-6">
+            <label for="res"><input type="radio" name="parking" id="res"
+              value="restricted">Restricted
+            </label>
+          </div>
+          <div class="radio col-sm-6">
+            <label for="unres"><input type="radio" name="parking" id="unres"
+              value="unrestricted">Unrestricted
+            </label>
+          </div>
         </div>
       </div>
 
@@ -163,9 +162,44 @@
             placeholder="22000">
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="owner-voltage" class="col-sm-2">Owner Voltage V</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="owner-voltage"
+            placeholder="208">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="owner-phase" class="col-sm-2">Owner Phase</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="owner-phase"
+            placeholder="1 or 3">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-4" id="install-wrapper">
+          <div class="radio-inline">
+            <label for="conduit"><input type="radio" name="install" id="conduit"
+              value="conduit">Conduit
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label for="freeair"><input type="radio" name="install" id="freeair"
+              value="freeair">Freeair
+            </label>
+          </div>
+        </div>
+
+      </div>
+
     </form>
   </div>
   <div class="row well">
+  <p>The Owner's Panel is continuous, therefore this calculation will be base
+off a derating factor of 80% for wire in conduit and 70% for wire run in free
+air</p>
     <form role="form" id="owner-button-form">
       <div class="col-sm-1 ">
         <button type="button" class="btn btn-primary" id="owner-check">

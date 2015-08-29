@@ -155,20 +155,19 @@ $(document).ready(() => {
 
         // add each total to the demands array
         demands.area = calArea(entries.area);
-        //console.log("area: " + demands.area);
         demands.range = calRange(entries.range);
-        //console.log("range " + demands.range);
         demands.extras = calExtras(entries.extras);
-        //console.log("extra " + demands.extras);
         demands.subTotal = demands.area + demands.range + demands.extras;
-        //console.log("sub " + demands.subTotal);
         demands.heat_ac = calHeatAC(entries.heat, entries.ac);
-        //console.log("heat_ac " + demands.heat_ac);
         demands.suiteTotal = parseInt(demands.heat_ac, 10) +
           parseInt(demands.subTotal, 10);
-          //console.log("total wattage  " + demands.suiteTotal);
-
+        //console.log("total wattage  " + demands.suiteTotal);
+        //console.log("area: " + demands.area);
+        //console.log("range " + demands.range);
+        //console.log("extra " + demands.extras);
+        //console.log("sub " + demands.subTotal);
         //console.log(demands.suiteTotal);
+        //console.log("heat_ac " + demands.heat_ac);
         // find answer!!
         return calMinWireAmpacity(demands.suiteTotal, entries.suite_voltage,
           entries.suite_phase);

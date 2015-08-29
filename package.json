@@ -1,0 +1,34 @@
+{
+  "name": "service_calculator",
+  "version": "1.0.0",
+  "description": "Appartment Service Calculator based off CEC Rule book 2012",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.5"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "build": "test sean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natac13/Appartment-Service-Calculator-JS.git"
+  },
+  "keywords": [
+    "CEC",
+    "calculator",
+    "appartment"
+  ],
+  "author": "Sean Campbell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natac13/Appartment-Service-Calculator-JS/issues"
+  },
+  "homepage": "https://github.com/natac13/Appartment-Service-Calculator-JS#readme"
+}
