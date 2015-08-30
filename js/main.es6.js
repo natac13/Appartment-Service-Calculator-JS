@@ -186,6 +186,7 @@ $(document).ready(() => {
         if (parseInt(answer, 10) === user_attempt) {
           alert("YEAH BUDDY!! YOU GOT IT!");
           // add css class to style as well
+          wrongAnswers = new Set();
           return true;
         }
 

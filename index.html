@@ -287,6 +287,8 @@ air</p>
         </div>
       </div>
 
+
+
       <button type="button" class='btn btn-info' id="add-unit">
         Add Another Unit</button>
 
@@ -315,35 +317,43 @@ air</p>
       </div>
     </form>
 
-      <p>Continuous Section (owner's) Apply 8-202(3)(e)</p>
-      <div class="form-group">
-        <label for="owner-sec-other-loads" class="col-sm-2">
-          Owner's Other Loads
-        </label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="owner-sec-other-loads"
-            placeholder="22000">
+      <div class="continuous">
+        <p>Continuous Section (owner's) Apply 8-202(3)(e)</p>
+        <p class='info'>
+          Any loads that are to be taken at 100% (EV charging) will have to be
+included by you the user afterwards</p>
+        <div class="form-group">
+          <label for="owner-sec-heating" class="col-sm-2">
+            Total Owner's Heating
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="owner-sec-heating"
+              placeholder="30000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="owner-sec-parking" class="col-sm-2">
+            Owner's Parking Loads
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="owner-sec-parking"
+              placeholder="13200">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="owner-sec-other-loads" class="col-sm-2">
+            Owner's Other Loads
+            <span class='info'>
+              (includes everything that will get 8-202(3)(e) applied)
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="owner-sec-other-loads"
+              placeholder="22000">
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="owner-sec-heating" class="col-sm-2">
-          Total Owner's Heating
-        </label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="owner-sec-heating"
-            placeholder="30000">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="owner-sec-parking" class="col-sm-2">
-          Owner's Parking Loads
-        </label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="owner-sec-parking"
-            placeholder="13200">
-        </div>
-      </div>
-  </form>
+
   </div>
 
   <div class="row well">
@@ -358,7 +368,7 @@ air</p>
             placeholder="continuous">
         </div>
         <div class="col-sm-1 ">
-          <button type="button" class="btn btn-warning" id="continuous-answer">
+          <button type="button" class="btn btn-warning" id="con-answer">
             Answer
           </button>
         </div>
@@ -379,5 +389,7 @@ air</p>
   <script src="js/main.complied.js"></script>
   <script src="js/owner.complied.js"></script>
   <script src="js/total.complied.js"></script>
+  <script src="js/dist/continuous.complied.js"></script>
+
 </body>
 </html>

@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "test sean",
-    "lint": "eslint js/"
+    "lint": "eslint js/src/"
   },
   "repository": {
     "type": "git",

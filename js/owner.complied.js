@@ -12,7 +12,7 @@ $(document).ready(function () {
     */
     var demands = {},
         entries = {},
-        $owner_form = $('#owner-button-form'),
+        $ownerForm = $('#owner-form'),
         wrongAnswers = new Set(),
         answer = undefined,
 
@@ -110,16 +110,16 @@ $(document).ready(function () {
 
     function calculator() {
       var total = 0;
-      entries.misc = $('#mis-loads').val();
-      entries.parking = $('#parking-demand').val();
+      entries.misc = $ownerForm.find('#mis-loads').val();
+      entries.parking = $ownerForm.find('#parking-demand').val();
       // will be restricted or unrestricted
-      entries.parking_type = $('#parking-wrapper').find('input[name=parking]:checked').val();
-      entries.heat = $('#owner-heat').val();
-      entries.other = $('#other-loads').val();
-      entries.voltage = $('#owner-voltage').val();
-      entries.phase = $('#owner-phase').val();
+      entries.parking_type = $ownerForm.find('#parking-wrapper').find('input[name=parking]:checked').val();
+      entries.heat = $ownerForm.find('#owner-heat').val();
+      entries.other = $ownerForm.find('#other-loads').val();
+      entries.voltage = $ownerForm.find('#owner-voltage').val();
+      entries.phase = $ownerForm.find('#owner-phase').val();
       entries.install = $('#install-wrapper').find('input[name=install]:checked').val();
-      entries.user_answer = $('#owner-user-answer').val();
+      entries.userAnswer = $('#owner-user-answer').val();
       console.log(entries);
 
       demands.misc = calMisc(entries.misc);
@@ -127,15 +127,15 @@ $(document).ready(function () {
       demands.heat = calHeat(entries.heat);
       demands.other = calMisc(entries.other);
       total = sumDemands(demands);
-      console.log("total " + calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
+      console.log('total ' + calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
       return calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install);
     }
 
     function checkAnswer() {
       answer = calculator();
-      var attempt = parseInt(entries.user_answer, 10);
+      var attempt = parseInt(entries.userAnswer, 10);
       if (parseInt(answer, 10) === attempt) {
-        alert("YEAH BUDDY!! YOU GOT IT!");
+        alert('YEAH BUDDY!! YOU GOT IT!');
         // add css class to style as well
         return true;
       }
@@ -144,18 +144,18 @@ $(document).ready(function () {
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
 
-      console.log("Test");
+      console.log('Test');
     }
 
     function giveAnswer() {
       // display answer
-      var $dis_node = $owner_form.find('#display-owner-answer');
+      var $displayNode = $('#owner-button-form').find('#display-owner-answer');
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
-        $dis_node.val("You need to try a few answers first!");
+        $displayNode.val('You need to try a few answers first!');
         return false;
       }
-      $dis_node.val(answer);
+      $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure
     }

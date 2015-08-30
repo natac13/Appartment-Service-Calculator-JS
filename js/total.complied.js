@@ -1,13 +1,3 @@
-/**
-
-  TODO:
-  - Could look into lodash to flatten the array instead of this method.
-  - Got all the units now.
-  - add button to add another unit type.
-  - finsih the rest lol
-
- */
-
 'use strict';
 
 Array.prototype.concatAll = function () {
@@ -25,15 +15,11 @@ $(document).ready(function () {
         wrongAnswers = new Set(),
         answer = undefined;
 
-    /*==================================================
-    =            Non-continuous Load Suites            =
-    ==================================================*/
-
     function addNewUnit() {
       var ex = 3;
       return function () {
         ex++;
-        $('#total-form').find('.unit-info').last().after('<div class="form-group unit-info"> ' + ('<label for="unit-demand-' + ex + '" class="col-sm-2">') + 'Unit Subtotal Demand</label><div class="col-sm-2">' + ('<input type="text" class="form-control" id="unit-demand-' + ex + '" ') + 'placeholder="25000" name="demand"></div>' + ('<label for="unit-count-' + ex + '" class="col-sm-2">Unit Count</label>') + '<div class="col-sm-2"><input type="text" class="form-control" ' + ('id="unit-count-' + ex + '" placeholder="4" name="count"></div></div>') + ('<label for="unit-heat-' + ex + '" class="col-sm-2">Unit Heat Demand (W)') + '</label><div class="col-sm-2">' + ('<input type="text" class="form-control" id="unit-heat-' + ex + '" ') + 'placeholder="8000" name="heat"></div>');
+        $('#total-form').find('.unit-info').last().after('<div class="form-group unit-info"><label ' + ('for="unit-demand-' + ex + '" class="col-sm-2">Unit Subtotal Demand</label>') + '<div class="col-sm-2"><input type="text" class="form-control" ' + ('id="unit-demand-' + ex + '" placeholder="10000" name="demand"></div>') + ('<label for="unit-count-' + ex + '" class="col-sm-2">Unit Count</label>') + '<div class="col-sm-2"><input type="text" class="form-control" ' + ('id="unit-count-' + ex + '" placeholder="2" name="count"></div>') + ('<label for="unit-heat-' + ex + '" class="col-sm-2">Unit Heat Demand (W)') + '</label><div class="col-sm-2"><input type="text" ' + ('class="form-control" id="unit-heat-' + ex + '" placeholder="8000" ') + 'name="heat"></div></div>');
       };
     }
 
@@ -106,13 +92,13 @@ $(document).ready(function () {
     }
 
     function calculator() {
-      entries.units = calUnitDemands();
-      entries.heat = calUnitHeat();
+      demands.units = calUnitDemands();
+      demands.heat = calUnitHeat();
       entries.userAnswer = $('#total-form').find('#total-user-answer').val();
-      console.log('entries.units ' + entries.units);
-      console.log('entries.heat ' + entries.heat);
+      console.log('demands.units ' + demands.units);
+      console.log('demands.heat ' + demands.heat);
 
-      return entries.heat + entries.units;
+      return demands.heat + demands.units;
     }
 
     function checkAnswer() {
@@ -124,6 +110,7 @@ $(document).ready(function () {
       if (parseInt(answer, 10) === attempt) {
         alert('YEAH BUDDY!! YOU GOT IT!');
         // add css class to style as well
+        wrongAnswers = new Set();
         return true;
       }
       console.log(attempt);
@@ -149,11 +136,5 @@ $(document).ready(function () {
     $('#total-answer-btn').click(giveAnswer);
     var addUnit = addNewUnit();
     $('#add-unit').click(addUnit);
-
-    /*=====  End of Non-Continuous Section Suites  ======*/
-
-    /*=================================================
-    =            Continuous Section Onwer's           =
-    =================================================*/
   })();
 });

@@ -10,7 +10,7 @@ $(document).ready(() => {
 */
     let demands = {},
       entries = {},
-      $owner_form = $('#owner-button-form'),
+      $ownerForm = $('#owner-form'),
       wrongAnswers = new Set(),
       answer,
       // get buttons
@@ -36,7 +36,7 @@ $(document).ready(() => {
  * @param  {string} the kind of parking stalls either restricted or unrestricted
  * @return {number} demand for the parking stalls in Watts
  */
-    function calParking(amount, type) {
+    function calParking (amount, type) {
       let total = 0,
         x;
       amount = parseInt(amount, 10);
@@ -79,7 +79,7 @@ $(document).ready(() => {
  * @param  {string} demand the demand from the user in watts
  * @return {number}        total demand for heating
  */
-    function calHeat(demand) {
+    function calHeat (demand) {
       return parseInt(demand, 10) * 0.75;
     }
 
@@ -90,13 +90,13 @@ $(document).ready(() => {
  * @param  {object} object the object which all the values will be summed
  * @return {number}        the total demands from the object
  */
-    function sumDemands(object) {
+    function sumDemands (object) {
       return Object.keys(object).reduce((total, key) => {
         return total + parseFloat(object[key]);
       }, 0);
     }
 
-    function calMinWireAmpacity(wattage, voltage, phase, install) {
+    function calMinWireAmpacity (wattage, voltage, phase, install) {
       wattage = parseInt(wattage, 10);
       voltage = parseInt(voltage, 10);
       phase = parseInt(phase, 10);
@@ -108,20 +108,20 @@ $(document).ready(() => {
     }
 
 
-    function calculator() {
+    function calculator () {
       let total = 0;
-      entries.misc = $('#mis-loads').val();
-      entries.parking = $('#parking-demand').val();
+      entries.misc = $ownerForm.find('#mis-loads').val();
+      entries.parking = $ownerForm.find('#parking-demand').val();
       // will be restricted or unrestricted
-      entries.parking_type = $('#parking-wrapper')
+      entries.parking_type = $ownerForm.find('#parking-wrapper')
         .find('input[name=parking]:checked').val();
-      entries.heat = $('#owner-heat').val();
-      entries.other = $('#other-loads').val();
-      entries.voltage = $('#owner-voltage').val();
-      entries.phase = $('#owner-phase').val();
+      entries.heat = $ownerForm.find('#owner-heat').val();
+      entries.other = $ownerForm.find('#other-loads').val();
+      entries.voltage = $ownerForm.find('#owner-voltage').val();
+      entries.phase = $ownerForm.find('#owner-phase').val();
       entries.install = $('#install-wrapper')
         .find('input[name=install]:checked').val();
-      entries.user_answer = $('#owner-user-answer').val();
+      entries.userAnswer = $('#owner-user-answer').val();
       console.log(entries);
 
       demands.misc = calMisc(entries.misc);
@@ -129,18 +129,19 @@ $(document).ready(() => {
       demands.heat = calHeat(entries.heat);
       demands.other = calMisc(entries.other);
       total = sumDemands(demands);
-      console.log("total " +calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
-       return calMinWireAmpacity(total, entries.voltage, entries.phase,
+      console.log('total ' +calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install));
+      return calMinWireAmpacity(total, entries.voltage, entries.phase,
           entries.install);
     }
 
 
-    function checkAnswer() {
+    function checkAnswer () {
       answer = calculator();
-      let attempt = parseInt(entries.user_answer, 10);
+      let attempt = parseInt(entries.userAnswer, 10);
       if (parseInt(answer, 10) === attempt) {
-        alert("YEAH BUDDY!! YOU GOT IT!");
+        alert('YEAH BUDDY!! YOU GOT IT!');
         // add css class to style as well
+        wrongAnswers = new Set();
         return true;
       }
 
@@ -148,24 +149,23 @@ $(document).ready(() => {
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
 
-      console.log("Test");
+      console.log('Test');
     }
 
-    function giveAnswer() {
+    function giveAnswer () {
       // display answer
-        let $dis_node = $owner_form.find('#display-owner-answer');
+        let $displayNode = $('#owner-button-form').find('#display-owner-answer');
         if (wrongAnswers.size < 3) {  // tried at least 3 different times
-          $dis_node.val("You need to try a few answers first!");
+          $displayNode.val('You need to try a few answers first!');
           return false;
         }
-        $dis_node.val(answer);
+        $displayNode.val(answer);
         wrongAnswers = new Set();
         // add css class to the element to show a failure
-    }
+      }
 
     // on clicks
     $check.click(checkAnswer);
     $answer.click(giveAnswer);
-
   }());
 });
