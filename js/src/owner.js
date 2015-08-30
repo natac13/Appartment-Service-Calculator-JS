@@ -102,7 +102,6 @@ $(document).ready(() => {
       phase = parseInt(phase, 10);
       let tmp = (phase === 1) ? (wattage / voltage).toFixed(2) : (wattage /
         (Math.sqrt(3) * voltage)).toFixed(2);
-      console.log("tmp "+tmp);
       return install === 'freeair' ? +(tmp / 0.7).toFixed(2) :
         +(tmp / 0.8).toFixed(2);
     }
@@ -113,7 +112,7 @@ $(document).ready(() => {
       entries.misc = $ownerForm.find('#mis-loads').val();
       entries.parking = $ownerForm.find('#parking-demand').val();
       // will be restricted or unrestricted
-      entries.parking_type = $ownerForm.find('#parking-wrapper')
+      entries.parkingType = $ownerForm.find('#parking-wrapper')
         .find('input[name=parking]:checked').val();
       entries.heat = $ownerForm.find('#owner-heat').val();
       entries.other = $ownerForm.find('#other-loads').val();
@@ -125,7 +124,7 @@ $(document).ready(() => {
       console.log(entries);
 
       demands.misc = calMisc(entries.misc);
-      demands.parking = calParking(entries.parking, entries.parking_type);
+      demands.parking = calParking(entries.parking, entries.parkingType);
       demands.heat = calHeat(entries.heat);
       demands.other = calMisc(entries.other);
       total = sumDemands(demands);

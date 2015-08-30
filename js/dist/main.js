@@ -3,22 +3,13 @@
   TODO:
   - Make button shake like electrical current
   - do something better than an alert for right answer.
-  - finish owner panel input and finial calculation
   - put message about gas range vs electric range and not to worry
 
- */
-
-/**
- *
- * This file will be written in ES6 Syntax thenn the script tag is pointing to
- * the main.complied.js file
- *
  */
 
 'use strict';
 
 $(document).ready(function () {
-
   var SUITE = (function () {
     /**
      * initialize main variables
@@ -28,14 +19,14 @@ $(document).ready(function () {
      */
     var demands = {},
         entries = {},
-        $unit_form = $('#unit_demands'),
+        $unitForm = $('#unit_demands'),
         wrongAnswers = new Set(),
         answer = undefined,
 
     // get buttons
     $check = $('#check'),
         $answer = $('#answer'),
-        $add_load = $('#add-load');
+        $addLoad = $('#add-load');
 
     /**
      * Finds all the extra-load classes from the DOM including newly created ones.
@@ -146,14 +137,14 @@ $(document).ready(function () {
     function calculator() {
       // all values are string from text fields
       entries = {
-        area: $unit_form.find('#area').val(),
-        range: $unit_form.find('#range').val(),
-        heat: $unit_form.find('#heat').val(),
+        area: $unitForm.find('#area').val(),
+        range: $unitForm.find('#range').val(),
+        heat: $unitForm.find('#heat').val(),
         extras: getExtraLoads(),
-        ac: $unit_form.find('#a-c').val(),
-        suite_voltage: $unit_form.find('#suite-voltage').val(),
-        suite_phase: $unit_form.find('#suite-phase').val(),
-        user_answer: $('#suite_answer').find('#user-answer').val()
+        ac: $unitForm.find('#a-c').val(),
+        suiteVoltage: $unitForm.find('#suite-voltage').val(),
+        suitePhase: $unitForm.find('#suite-phase').val(),
+        userAmswer: $('#suite_answer').find('#user-answer').val()
       };
 
       // add each total to the demands array
@@ -161,17 +152,17 @@ $(document).ready(function () {
       demands.range = calRange(entries.range);
       demands.extras = calExtras(entries.extras);
       demands.subTotal = demands.area + demands.range + demands.extras;
-      demands.heat_ac = calHeatAC(entries.heat, entries.ac);
-      demands.suiteTotal = parseInt(demands.heat_ac, 10) + parseInt(demands.subTotal, 10);
+      demands.heatAC = calHeatAC(entries.heat, entries.ac);
+      demands.suiteTotal = parseInt(demands.heatAC, 10) + parseInt(demands.subTotal, 10);
       //console.log("total wattage  " + demands.suiteTotal);
       //console.log("area: " + demands.area);
       //console.log("range " + demands.range);
       //console.log("extra " + demands.extras);
       //console.log("sub " + demands.subTotal);
       //console.log(demands.suiteTotal);
-      //console.log("heat_ac " + demands.heat_ac);
+      //console.log("heatAC " + demands.heatAC);
       // find answer!!
-      return calMinWireAmpacity(demands.suiteTotal, entries.suite_voltage, entries.suite_phase);
+      return calMinWireAmpacity(demands.suiteTotal, entries.suiteVoltage, entries.suitePhase);
     }
 
     /**
@@ -181,29 +172,30 @@ $(document).ready(function () {
      */
     function checkAnswer() {
       answer = calculator();
-      var user_attempt = parseInt(entries.user_answer, 10);
+      var attempt = parseInt(entries.userAmswer, 10);
       console.log(answer);
       // check for right answer then do css magic!!
-      if (parseInt(answer, 10) === user_attempt) {
-        alert("YEAH BUDDY!! YOU GOT IT!");
+      if (parseInt(answer, 10) === attempt) {
+        alert('YEAH BUDDY!! YOU GOT IT!');
         // add css class to style as well
+        wrongAnswers = new Set();
         return true;
       }
 
-      wrongAnswers.add(user_attempt);
+      wrongAnswers.add(attempt);
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
     }
 
     function giveAnswer() {
       // display answer
-      var $dis_node = $('#suite_answer').find('#display-suite-answer');
+      var $displayNode = $('#suite_answer').find('#display-suite-answer');
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
-        $dis_node.val('You need to try an answer first!');
+        $displayNode.val('You need to try an answer first!');
         return false;
       }
-      $dis_node.val(answer);
+      $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure
     }
@@ -212,6 +204,6 @@ $(document).ready(function () {
     $check.click(checkAnswer);
     $answer.click(giveAnswer);
     var i = addExtraLoad();
-    $add_load.click(i);
+    $addLoad.click(i);
   })(); // end of SUITE namespace.
 });
