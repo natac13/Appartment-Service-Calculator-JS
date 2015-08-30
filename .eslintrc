@@ -12,6 +12,21 @@
     "quotes": [2, "single"],
     "eol-last": [0],
     "no-mixed-requires": [0],
-    "no-underscore-dangle": [0]
+    "no-underscore-dangle": [0],
+    "indent": [2, 2],
+    "padded-blocks": [2, "never"],
+    "camelcase": 1,
+    "comma-spacing": [2, {
+        "before": false,
+        "after": true
+      }],
+    "space-after-keywords": [2, "always" ],
+    "space-before-function-paren": [1, "always"],
+    "space-before-blocks": [2, "always"],
+    "arrow-parens": [2, "always"],
+    "block-spacing": [2, "always"],
+
+
+
   }
 }

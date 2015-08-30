@@ -30,7 +30,7 @@ $(document).ready(() => {
       let demands = {},
         entries = {},
         $unit_form = $('#unit_demands'),
-        wrong_answers = new Set(),
+        wrongAnswers = new Set(),
         answer,
       // get buttons
         $check = $('#check'),
@@ -91,7 +91,7 @@ $(document).ready(() => {
  * @param  {string} range From the input field #range
  * @return {number}       demand based off the range.
  */
-      function calRange range) {
+      function calRange(range) {
         range = parseInt(range, 10);
         return range <= 12000 ? 6000 : 6000 + ((range - 12000) * 0.4);
       }
@@ -189,20 +189,21 @@ $(document).ready(() => {
           return true;
         }
 
-        wrong_answers.add(user_attempt);
-        console.log(wrong_answers);
-        console.log(wrong_answers.size);
+        wrongAnswers.add(user_attempt);
+        console.log(wrongAnswers);
+        console.log(wrongAnswers.size);
 
       }
 
       function giveAnswer() {
         // display answer
         let $dis_node = $('#suite_answer').find('#display-suite-answer');
-        if (wrong_answers.size < 3) {  // tried at least 3 different times
-          $dis_node.val("You need to try an answer first!");
-          return false;
+        if (wrongAnswers.size < 3) {  // tried at least 3 different times
+            $dis_node.val('You need to try an answer first!');
+            return false;
         }
         $dis_node.val(answer);
+        wrongAnswers = new Set();
         // add css class to the element to show a failure
       }
 

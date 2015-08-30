@@ -13,7 +13,7 @@ $(document).ready(function () {
     var demands = {},
         entries = {},
         $owner_form = $('#owner-button-form'),
-        wrong_answers = new Set(),
+        wrongAnswers = new Set(),
         answer = undefined,
 
     // get buttons
@@ -133,16 +133,16 @@ $(document).ready(function () {
 
     function checkAnswer() {
       answer = calculator();
-      var user_attempt = parseInt(entries.user_answer, 10);
-      if (parseInt(answer, 10) === user_attempt) {
+      var attempt = parseInt(entries.user_answer, 10);
+      if (parseInt(answer, 10) === attempt) {
         alert("YEAH BUDDY!! YOU GOT IT!");
         // add css class to style as well
         return true;
       }
 
-      wrong_answers.add(user_attempt);
-      console.log(wrong_answers);
-      console.log(wrong_answers.size);
+      wrongAnswers.add(attempt);
+      console.log(wrongAnswers);
+      console.log(wrongAnswers.size);
 
       console.log("Test");
     }
@@ -150,12 +150,13 @@ $(document).ready(function () {
     function giveAnswer() {
       // display answer
       var $dis_node = $owner_form.find('#display-owner-answer');
-      if (wrong_answers.size < 3) {
+      if (wrongAnswers.size < 3) {
         // tried at least 3 different times
         $dis_node.val("You need to try a few answers first!");
         return false;
       }
       $dis_node.val(answer);
+      wrongAnswers = new Set();
       // add css class to the element to show a failure
     }
 

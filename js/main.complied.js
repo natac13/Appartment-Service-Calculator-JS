@@ -29,7 +29,7 @@ $(document).ready(function () {
     var demands = {},
         entries = {},
         $unit_form = $('#unit_demands'),
-        wrong_answers = new Set(),
+        wrongAnswers = new Set(),
         answer = undefined,
 
     // get buttons
@@ -190,20 +190,21 @@ $(document).ready(function () {
         return true;
       }
 
-      wrong_answers.add(user_attempt);
-      console.log(wrong_answers);
-      console.log(wrong_answers.size);
+      wrongAnswers.add(user_attempt);
+      console.log(wrongAnswers);
+      console.log(wrongAnswers.size);
     }
 
     function giveAnswer() {
       // display answer
       var $dis_node = $('#suite_answer').find('#display-suite-answer');
-      if (wrong_answers.size < 3) {
+      if (wrongAnswers.size < 3) {
         // tried at least 3 different times
-        $dis_node.val("You need to try an answer first!");
+        $dis_node.val('You need to try an answer first!');
         return false;
       }
       $dis_node.val(answer);
+      wrongAnswers = new Set();
       // add css class to the element to show a failure
     }
 
