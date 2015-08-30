@@ -91,7 +91,7 @@ $(document).ready(() => {
  * @param  {string} range From the input field #range
  * @return {number}       demand based off the range.
  */
-      function calRange(range) {
+      function calRange range) {
         range = parseInt(range, 10);
         return range <= 12000 ? 6000 : 6000 + ((range - 12000) * 0.4);
       }
