@@ -51,3 +51,4 @@ $(document).ready(function () {
     $('#con-answer').click(giveAnswer);
   })();
 });
+//# sourceMappingURL=continuous.js.map

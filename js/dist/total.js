@@ -138,3 +138,4 @@ $(document).ready(function () {
     $('#add-unit').click(addUnit);
   })();
 });
+//# sourceMappingURL=total.js.map

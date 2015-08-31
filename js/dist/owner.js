@@ -165,3 +165,4 @@ $(document).ready(function () {
     $answer.click(giveAnswer);
   })();
 });
+//# sourceMappingURL=owner.js.map
