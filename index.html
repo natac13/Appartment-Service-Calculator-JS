@@ -31,34 +31,34 @@
       <legend>Unit Area / Equipment Demands 8-202(1)</legend>
 
       <div class="form-group">
-        <label for="area" class="col-sm-2">Area (m2)</label>
-        <div class="col-sm-10">
+        <label for="area" class="col-sm-12 col-md-2">Area (m2)</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="area" placeholder="79">
         </div>
       </div>
       <div class="form-group">
-        <label for="range" class="col-sm-2">Range W</label>
-        <div class="col-sm-10">
+        <label for="range" class="col-sm-12 col-md-2">Range W</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="range" placeholder="12000">
         </div>
       </div>
       <div class="form-group">
-        <label for="heat" class="col-sm-2">Heat W</label>
-        <div class="col-sm-10">
+        <label for="heat" class="col-sm-12 col-md-2">Heat W</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="heat" placeholder="1500">
         </div>
       </div>
       <div class="extra-loads-wrapper">
         <div class="form-group">
-          <label for="extra1" class="col-sm-2">Extra Load W</label>
-          <div class="col-sm-10">
+          <label for="extra1" class="col-sm-12 col-md-2">Extra Load W</label>
+          <div class="col-sm-12 col-md-10">
             <input type="text" class="form-control extra-load" id="extra1"
               placeholder="4000">
           </div>
         </div>
         <div class="form-group">
-          <label for="extra2" class="col-sm-2">Extra Load W</label>
-          <div class="col-sm-10">
+          <label for="extra2" class="col-sm-12 col-md-2">Extra Load W</label>
+          <div class="col-sm-12 col-md-10">
             <input type="text" class="form-control extra-load" id="extra2"
               placeholder="1800">
           </div>
@@ -67,21 +67,21 @@
       <button type="button" class='btn btn-info' id="add-load">
         Add Extra Load</button>
       <div class="form-group">
-        <label for="a-c" class="col-sm-2">A/C W</label>
-        <div class="col-sm-10">
+        <label for="a-c" class="col-sm-12 col-md-2">A/C W</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="a-c" placeholder="0">
         </div>
       </div>
       <div class="form-group">
-        <label for="suite-voltage" class="col-sm-2">Suite Voltage V</label>
-        <div class="col-sm-10">
+        <label for="suite-voltage" class="col-sm-12 col-md-2">Suite Voltage V</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="suite-voltage"
             placeholder="208">
         </div>
       </div>
       <div class="form-group">
-        <label for="suite-phase" class="col-sm-2">Suite Phase</label>
-        <div class="col-sm-10">
+        <label for="suite-phase" class="col-sm-12 col-md-2">Suite Phase</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="suite-phase"
             placeholder="1 or 3">
         </div>
@@ -91,26 +91,26 @@
 
   <div class="row well">
     <form role="form" id="suite_answer">
-      <div class="col-sm-1 ">
+      <div class="col-sm-12 col-md-1 ">
         <button type="button" class="btn btn-primary" id="check">
           Check
         </button>
       </div>
-      <div class="col-sm-3 ">
+      <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" id="user-answer"
           placeholder="Suite Ampacity (2 deciaml places)">
       </div>
-      <div class="col-sm-1 ">
+      <div class="col-sm-12 col-md-1 ">
         <button type="button" class="btn btn-warning" id="answer">
           Answer
         </button>
       </div>
-      <div class="col-sm-3 ">
+      <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" readonly="readonly"
           id="display-suite-answer">
       </div>
     </form>
-    <div class="col-sm-4" id="congrats1">
+    <div class="col-sm-12 col-md-4" id="congrats1">
     </div>
   </div>
 
@@ -122,26 +122,26 @@
       <legend>Owner Area Demands 8-202(4)</legend>
 
       <div class="form-group">
-        <label for="mis-loads" class="col-sm-2">Miscellaneous Loads</label>
-        <div class="col-sm-10">
+        <label for="mis-loads" class="col-sm-12 col-md-2">Miscellaneous Loads</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="mis-loads"
             placeholder="22000">
         </div>
       </div>
 
       <div class="form-group">
-        <label for="parking" class="col-sm-2">Number of Parking Stalls</label>
-        <div class="col-sm-6">
+        <label for="parking" class="col-sm-12 col-md-2">Number of Parking Stalls</label>
+        <div class="col-sm-12 col-md-6">
           <input type="text" class="form-control" name="parking"
             placeholder="18" id="parking-demand">
         </div>
-        <div class="col-sm-4" id="parking-wrapper">
-          <div class="radio col-sm-6">
+        <div class="col-sm-12 col-md-4" id="parking-wrapper">
+          <div class="radio col-sm-12 col-md-6">
             <label for="res"><input type="radio" name="parking" id="res"
               value="restricted">Restricted
             </label>
           </div>
-          <div class="radio col-sm-6">
+          <div class="radio col-sm-12 col-md-6">
             <label for="unres"><input type="radio" name="parking" id="unres"
               value="unrestricted">Unrestricted
             </label>
@@ -150,37 +150,37 @@
       </div>
 
       <div class="form-group">
-        <label for="owner-heat" class="col-sm-2">Owner's Heating</label>
-        <div class="col-sm-10">
+        <label for="owner-heat" class="col-sm-12 col-md-2">Owner's Heating</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="owner-heat"
             placeholder="22000">
         </div>
       </div>
       <div class="form-group">
-        <label for="other-loads" class="col-sm-2">Other Loads</label>
-        <div class="col-sm-10">
+        <label for="other-loads" class="col-sm-12 col-md-2">Other Loads</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="other-loads"
             placeholder="22000">
         </div>
       </div>
 
       <div class="form-group">
-        <label for="owner-voltage" class="col-sm-2">Owner Voltage V</label>
-        <div class="col-sm-10">
+        <label for="owner-voltage" class="col-sm-12 col-md-2">Owner Voltage V</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="owner-voltage"
             placeholder="208">
         </div>
       </div>
       <div class="form-group">
-        <label for="owner-phase" class="col-sm-2">Owner Phase</label>
-        <div class="col-sm-10">
+        <label for="owner-phase" class="col-sm-12 col-md-2">Owner Phase</label>
+        <div class="col-sm-12 col-md-10">
           <input type="text" class="form-control" id="owner-phase"
             placeholder="1 or 3">
         </div>
       </div>
 
       <div class="form-group">
-        <div class="col-sm-4" id="install-wrapper">
+        <div class="col-sm-12 col-md-4" id="install-wrapper">
           <div class="radio-inline">
             <label for="conduit"><input type="radio" name="install" id="conduit"
               value="conduit">Conduit
@@ -202,26 +202,26 @@
 off a derating factor of 80% for wire in conduit and 70% for wire run in free
 air</p>
     <form role="form" id="owner-button-form">
-      <div class="col-sm-1 ">
+      <div class="col-sm-12 col-md-1 ">
         <button type="button" class="btn btn-primary" id="owner-check">
           Check
         </button>
       </div>
-      <div class="col-sm-3 ">
+      <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" id="owner-user-answer"
         placeholder="Owners Ampacity (2 decimal places)">
       </div>
-      <div class="col-sm-1 ">
+      <div class="col-sm-12 col-md-1 ">
         <button type="button" class="btn btn-warning" id="owner-answer">
           Answer
         </button>
       </div>
-      <div class="col-sm-3 ">
+      <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" readonly="readonly"
           id="display-owner-answer">
       </div>
     </form>
-    <div class="col-sm-4" id="congrat2">
+    <div class="col-sm-12 col-md-4" id="congrats2">
 
     </div>
   </div> <!-- end of owners row -->
@@ -233,56 +233,56 @@ air</p>
       <legend>Main Service 8-202(3)</legend>
       <p>Non-continuous Section (suites)</p>
       <div class="form-group unit-info">
-        <label for="unit-demand-1" class="col-sm-2">Unit Subtotal Demand</label>
-        <div class="col-sm-2">
+        <label for="unit-demand-1" class="col-sm-12 col-md-2">Unit Subtotal Demand</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-demand-1"
             placeholder="15000" name="demand">
         </div>
 
-        <label for="unit-count-1" class="col-sm-2">Unit Count</label>
-        <div class="col-sm-2">
+        <label for="unit-count-1" class="col-sm-12 col-md-2">Unit Count</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-count-1"
             placeholder="3" name="count">
         </div>
 
-        <label for="unit-heat-1" class="col-sm-2">Unit Heat Demand (W)</label>
-        <div class="col-sm-2">
+        <label for="unit-heat-1" class="col-sm-12 col-md-2">Unit Heat Demand (W)</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-heat-1"
             placeholder="8000" name="heat">
         </div>
       </div>
 
       <div class="form-group unit-info">
-        <label for="unit-demand-2" class="col-sm-2">Unit Subtotal Demand</label>
-        <div class="col-sm-2">
+        <label for="unit-demand-2" class="col-sm-12 col-md-2">Unit Subtotal Demand</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-demand-2"
             placeholder="25000" name="demand">
         </div>
-        <label for="unit-count-2" class="col-sm-2">Unit Count</label>
-        <div class="col-sm-2">
+        <label for="unit-count-2" class="col-sm-12 col-md-2">Unit Count</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-count-2"
             placeholder="4" name="count">
         </div>
-        <label for="unit-heat-2" class="col-sm-2">Unit Heat Demand (W)</label>
-        <div class="col-sm-2">
+        <label for="unit-heat-2" class="col-sm-12 col-md-2">Unit Heat Demand (W)</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-heat-2"
             placeholder="8000" name="heat">
         </div>
       </div>
 
       <div class="form-group unit-info">
-        <label for="unit-demand-3" class="col-sm-2">Unit Subtotal Demand</label>
-        <div class="col-sm-2">
+        <label for="unit-demand-3" class="col-sm-12 col-md-2">Unit Subtotal Demand</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-demand-3"
             placeholder="10000" name="demand">
         </div>
-        <label for="unit-count-3" class="col-sm-2">Unit Count</label>
-        <div class="col-sm-2">
+        <label for="unit-count-3" class="col-sm-12 col-md-2">Unit Count</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-count-3"
             placeholder="2" name="count">
         </div>
-        <label for="unit-heat-3" class="col-sm-2">Unit Heat Demand (W)</label>
-        <div class="col-sm-2">
+        <label for="unit-heat-3" class="col-sm-12 col-md-2">Unit Heat Demand (W)</label>
+        <div class="col-sm-12 col-md-2">
           <input type="text" class="form-control" id="unit-heat-3"
             placeholder="8000" name="heat">
         </div>
@@ -295,25 +295,26 @@ air</p>
 
       <div class="row well">
           <form role="form">
-            <div class="col-sm-1 ">
+            <div class="col-sm-12 col-md-1 ">
               <button type="button" class="btn btn-primary" id="total-check">
                 Check
               </button>
             </div>
-            <div class="col-sm-3 ">
+            <div class="col-sm-12 col-md-3 ">
               <input type="text" class="form-control" id="total-user-answer"
                 placeholder="Total Watts of Non-continuous Loads">
             </div>
-            <div class="col-sm-1 ">
+            <div class="col-sm-12 col-md-1 ">
               <button type="button" class="btn btn-warning"
               id="total-answer-btn">Answer</button>
             </div>
-            <div class="col-sm-3 ">
+            <div class="col-sm-12 col-md-3 ">
               <input type="text" class="form-control" readonly="readonly"
                 id="display-total-answer">
             </div>
           </form>
-          <div class="col-sm-4" id="congrats3">
+        <div class="col-sm-12 col-md-4" id="congrats3">
+
         </div>
       </div>
     </form>
@@ -324,31 +325,31 @@ air</p>
           Any loads that are to be taken at 100% (EV charging) will have to be
 included by you the user afterwards</p>
         <div class="form-group">
-          <label for="owner-sec-heating" class="col-sm-2">
+          <label for="owner-sec-heating" class="col-sm-12 col-md-2">
             Total Owner's Heating
           </label>
-          <div class="col-sm-10">
+          <div class="col-sm-12 col-md-10">
             <input type="text" class="form-control" id="owner-sec-heating"
               placeholder="30000">
           </div>
         </div>
         <div class="form-group">
-          <label for="owner-sec-parking" class="col-sm-2">
+          <label for="owner-sec-parking" class="col-sm-12 col-md-2">
             Owner's Parking Loads
           </label>
-          <div class="col-sm-10">
+          <div class="col-sm-12 col-md-10">
             <input type="text" class="form-control" id="owner-sec-parking"
               placeholder="13200">
           </div>
         </div>
         <div class="form-group">
-          <label for="owner-sec-other-loads" class="col-sm-2">
+          <label for="owner-sec-other-loads" class="col-sm-12 col-md-2">
             Owner's Other Loads
             <span class='info'>
               (includes everything that will get 8-202(3)(e) applied)
             </span>
           </label>
-          <div class="col-sm-10">
+          <div class="col-sm-12 col-md-10">
             <input type="text" class="form-control" id="owner-sec-other-loads"
               placeholder="22000">
           </div>
@@ -359,26 +360,26 @@ included by you the user afterwards</p>
 
   <div class="row well">
       <form role="form" id="continuous-answer">
-        <div class="col-sm-1 ">
+        <div class="col-sm-12 col-md-1 ">
           <button type="button" class="btn btn-primary" id="continuous-check">
             Check
           </button>
         </div>
-        <div class="col-sm-3 ">
+        <div class="col-sm-12 col-md-3 ">
           <input type="text" class="form-control" id="continuous-user-answer"
             placeholder="continuous">
         </div>
-        <div class="col-sm-1 ">
+        <div class="col-sm-12 col-md-1 ">
           <button type="button" class="btn btn-warning" id="con-answer">
             Answer
           </button>
         </div>
-        <div class="col-sm-3 ">
+        <div class="col-sm-12 col-md-3 ">
           <input type="text" class="form-control" readonly="readonly"
             id="display-continuous-answer">
         </div>
       </form>
-      <div class="col-sm-4" id="congrats4">
+      <div class="col-sm-12 col-md-4" id="congrats4">
     </div>
   </div>
 

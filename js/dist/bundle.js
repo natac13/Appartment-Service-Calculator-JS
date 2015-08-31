@@ -1,12 +1,13 @@
 'use strict';
 
 $(document).ready(function () {
-  var TOTAL = (function () {
+  var CONTINUOUS = (function () {
     var entries = {},
         demands = {},
         wrongAnswers = new Set(),
         $contForm = $('.continuous'),
-        answer = undefined;
+        answer = undefined,
+        $congrats = $('#congrats4');
 
     function calculator() {
       entries.other = parseInt($contForm.find('#owner-sec-other-loads').val(), 10);
@@ -16,6 +17,27 @@ $(document).ready(function () {
       return (entries.other + entries.heat + entries.parking) * 0.75;
     }
 
+    function displaySuccess(success, fail, again, gaveup) {
+      if (success) {
+        $congrats.removeClass('alert-danger');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-success');
+        $congrats.html('<strong>Success</strong>');
+      }
+      if (fail) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-danger');
+        $congrats.html('<strong>Better luck next time!</strong>');
+      }
+      if (again) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-danger');
+        $congrats.addClass('alert alert-info');
+        $congrats.html('<strong>Just keep trying!</strong>');
+      }
+    }
+
     function checkAnswer() {
       answer = calculator();
       console.log(answer);
@@ -23,11 +45,11 @@ $(document).ready(function () {
       console.log('entries.userAnswer ' + entries.userAnswer);
       // check for right answer then do css magic!!
       if (parseInt(answer, 10) === attempt) {
-        alert('YEAH BUDDY!! YOU GOT IT!');
-        // add css class to style as well
+        displaySuccess(true, false, false);
         wrongAnswers = new Set();
         return true;
       }
+      displaySuccess(false, true, false);
       console.log(attempt);
       wrongAnswers.add(attempt);
       console.log(wrongAnswers);
@@ -39,9 +61,10 @@ $(document).ready(function () {
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
         $displayNode.val('You need to try an answer first!');
+        displaySuccess(false, false, true);
         return false;
       }
-      console.log(answer);
+      displaySuccess(false, true, false);
       $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure
@@ -79,7 +102,8 @@ $(document).ready(function () {
     // get buttons
     $check = $('#check'),
         $answer = $('#answer'),
-        $addLoad = $('#add-load');
+        $addLoad = $('#add-load'),
+        $congrats = $('#congrats1');
 
     /**
      * Finds all the extra-load classes from the DOM including newly created ones.
@@ -218,6 +242,26 @@ $(document).ready(function () {
       return calMinWireAmpacity(demands.suiteTotal, entries.suiteVoltage, entries.suitePhase);
     }
 
+    function displaySuccess(success, fail, again, gaveup) {
+      if (success) {
+        $congrats.removeClass('alert-danger');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-success');
+        $congrats.html('<strong>Success</strong>');
+      }
+      if (fail) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-danger');
+        $congrats.html('<strong>Better luck next time!</strong>');
+      }
+      if (again) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-danger');
+        $congrats.addClass('alert alert-info');
+        $congrats.html('<strong>Just keep trying!</strong>');
+      }
+    }
     /**
      * Will call the calculator() function which makes the entries object and fills
      * the demands object with the calculated demands
@@ -229,12 +273,12 @@ $(document).ready(function () {
       console.log(answer);
       // check for right answer then do css magic!!
       if (parseInt(answer, 10) === attempt) {
-        alert('YEAH BUDDY!! YOU GOT IT!');
         // add css class to style as well
+        displaySuccess(true, false, false);
         wrongAnswers = new Set();
         return true;
       }
-
+      displaySuccess(false, true, false);
       wrongAnswers.add(attempt);
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
@@ -246,8 +290,10 @@ $(document).ready(function () {
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
         $displayNode.val('You need to try an answer first!');
+        displaySuccess(false, false, true);
         return false;
       }
+      displaySuccess(false, true, false);
       $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure
@@ -263,7 +309,6 @@ $(document).ready(function () {
 'use strict';
 
 $(document).ready(function () {
-
   var OWNERS = (function () {
     /**
     * initialize main variables
@@ -280,7 +325,8 @@ $(document).ready(function () {
 
     // get buttons
     $check = $('#owner-check'),
-        $answer = $('#owner-answer');
+        $answer = $('#owner-answer'),
+        $congrats = $('#congrats2');
 
     /**
      * CEC Rule 8-202(4)
@@ -392,16 +438,36 @@ $(document).ready(function () {
       return calMinWireAmpacity(total, entries.voltage, entries.phase, entries.install);
     }
 
+    function displaySuccess(success, fail, again, gaveup) {
+      if (success) {
+        $congrats.removeClass('alert-danger');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-success');
+        $congrats.html('<strong>Success</strong>');
+      }
+      if (fail) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-danger');
+        $congrats.html('<strong>Better luck next time!</strong>');
+      }
+      if (again) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-danger');
+        $congrats.addClass('alert alert-info');
+        $congrats.html('<strong>Just keep trying!</strong>');
+      }
+    }
+
     function checkAnswer() {
       answer = calculator();
       var attempt = parseInt(entries.userAnswer, 10);
       if (parseInt(answer, 10) === attempt) {
-        alert('YEAH BUDDY!! YOU GOT IT!');
-        // add css class to style as well
+        displaySuccess(true, false, false);
         wrongAnswers = new Set();
         return true;
       }
-
+      displaySuccess(false, true, false);
       wrongAnswers.add(attempt);
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
@@ -415,8 +481,10 @@ $(document).ready(function () {
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
         $displayNode.val('You need to try a few answers first!');
+        displaySuccess(false, false, true);
         return false;
       }
+      displaySuccess(false, true, false);
       $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure
@@ -442,7 +510,8 @@ $(document).ready(function () {
     var entries = {},
         demands = {},
         wrongAnswers = new Set(),
-        answer = undefined;
+        answer = undefined,
+        $congrats = $('#congrats3');
 
     function addNewUnit() {
       var ex = 3;
@@ -530,6 +599,27 @@ $(document).ready(function () {
       return demands.heat + demands.units;
     }
 
+    function displaySuccess(success, fail, again, gaveup) {
+      if (success) {
+        $congrats.removeClass('alert-danger');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-success');
+        $congrats.html('<strong>Success</strong>');
+      }
+      if (fail) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-danger');
+        $congrats.html('<strong>Better luck next time!</strong>');
+      }
+      if (again) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-danger');
+        $congrats.addClass('alert alert-info');
+        $congrats.html('<strong>Just keep trying!</strong>');
+      }
+    }
+
     function checkAnswer() {
       answer = calculator();
       console.log('answer ' + answer);
@@ -537,11 +627,11 @@ $(document).ready(function () {
       console.log('entries.userAnswer ' + entries.userAnswer);
       // check for right answer then do css magic!!
       if (parseInt(answer, 10) === attempt) {
-        alert('YEAH BUDDY!! YOU GOT IT!');
-        // add css class to style as well
+        displaySuccess(true, false, false);
         wrongAnswers = new Set();
         return true;
       }
+      displaySuccess(false, true, false);
       console.log(attempt);
       wrongAnswers.add(attempt);
       console.log(wrongAnswers);
@@ -553,9 +643,10 @@ $(document).ready(function () {
       if (wrongAnswers.size < 3) {
         // tried at least 3 different times
         $displayNode.val('You need to try an answer first!');
+        displaySuccess(false, false, true);
         return false;
       }
-      console.log(answer);
+      displaySuccess(false, true, false);
       $displayNode.val(answer);
       wrongAnswers = new Set();
       // add css class to the element to show a failure

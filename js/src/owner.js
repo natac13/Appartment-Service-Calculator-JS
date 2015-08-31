@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
   let OWNERS = (() => {
   /**
 * initialize main variables
@@ -15,7 +14,8 @@ $(document).ready(() => {
       answer,
       // get buttons
       $check = $('#owner-check'),
-      $answer = $('#owner-answer');
+      $answer = $('#owner-answer'),
+      $congrats = $('#congrats2');
 
 /**
  * CEC Rule 8-202(4)
@@ -133,17 +133,36 @@ $(document).ready(() => {
           entries.install);
     }
 
+    function displaySuccess (success, fail, again, gaveup) {
+      if (success) {
+        $congrats.removeClass('alert-danger');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-success');
+        $congrats.html('<strong>Success</strong>');
+      }
+      if (fail) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-info');
+        $congrats.addClass('alert alert-danger');
+        $congrats.html('<strong>Better luck next time!</strong>');
+      }
+      if (again) {
+        $congrats.removeClass('alert-success');
+        $congrats.removeClass('alert-danger');
+        $congrats.addClass('alert alert-info');
+        $congrats.html('<strong>Just keep trying!</strong>');
+      }
+    }
 
     function checkAnswer () {
       answer = calculator();
       let attempt = parseInt(entries.userAnswer, 10);
       if (parseInt(answer, 10) === attempt) {
-        alert('YEAH BUDDY!! YOU GOT IT!');
-        // add css class to style as well
+        displaySuccess(true, false, false);
         wrongAnswers = new Set();
         return true;
       }
-
+      displaySuccess(false, true, false);
       wrongAnswers.add(attempt);
       console.log(wrongAnswers);
       console.log(wrongAnswers.size);
@@ -156,8 +175,10 @@ $(document).ready(() => {
         let $displayNode = $('#owner-button-form').find('#display-owner-answer');
         if (wrongAnswers.size < 3) {  // tried at least 3 different times
           $displayNode.val('You need to try a few answers first!');
+          displaySuccess(false, false, true);
           return false;
         }
+        displaySuccess(false, true, false);
         $displayNode.val(answer);
         wrongAnswers = new Set();
         // add css class to the element to show a failure

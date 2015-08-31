@@ -23,7 +23,8 @@ $(document).ready(() => {
       // get buttons
         $check = $('#check'),
         $answer = $('#answer'),
-        $addLoad = $('#add-load');
+        $addLoad = $('#add-load'),
+        $congrats = $('#congrats1');
 
 
 
@@ -161,6 +162,26 @@ $(document).ready(() => {
           entries.suitePhase);
       }
 
+      function displaySuccess (success, fail, again, gaveup) {
+        if (success) {
+          $congrats.removeClass('alert-danger');
+          $congrats.removeClass('alert-info');
+          $congrats.addClass('alert alert-success');
+          $congrats.html('<strong>Success</strong>');
+        }
+        if (fail) {
+          $congrats.removeClass('alert-success');
+          $congrats.removeClass('alert-info');
+          $congrats.addClass('alert alert-danger');
+          $congrats.html('<strong>Better luck next time!</strong>');
+        }
+        if (again) {
+          $congrats.removeClass('alert-success');
+          $congrats.removeClass('alert-danger');
+          $congrats.addClass('alert alert-info');
+          $congrats.html('<strong>Just keep trying!</strong>');
+        }
+      }
 /**
  * Will call the calculator() function which makes the entries object and fills
  * the demands object with the calculated demands
@@ -172,12 +193,12 @@ $(document).ready(() => {
         console.log(answer);
         // check for right answer then do css magic!!
         if (parseInt(answer, 10) === attempt) {
-          alert('YEAH BUDDY!! YOU GOT IT!');
           // add css class to style as well
+          displaySuccess(true, false, false);
           wrongAnswers = new Set();
           return true;
         }
-
+        displaySuccess(false, true, false);
         wrongAnswers.add(attempt);
         console.log(wrongAnswers);
         console.log(wrongAnswers.size);
@@ -188,8 +209,10 @@ $(document).ready(() => {
         let $displayNode = $('#suite_answer').find('#display-suite-answer');
         if (wrongAnswers.size < 3) {  // tried at least 3 different times
           $displayNode.val('You need to try an answer first!');
+          displaySuccess(false, false, true);
           return false;
         }
+        displaySuccess(false, true, false);
         $displayNode.val(answer);
         wrongAnswers = new Set();
         // add css class to the element to show a failure
@@ -203,5 +226,4 @@ $(document).ready(() => {
     let i = addExtraLoad();
     $addLoad.click(i);
   }()); // end of SUITE namespace.
-
 });
