@@ -53,9 +53,10 @@ $(document).ready(() => {
         return function () {
           ex++;
           $('.extra-loads-wrapper').append('<div class="form-group"><label ' +
-          `for="extra${ex}" class="col-sm-2">Extra Load W</label><div ` +
-          'class="col-sm-10"><input type="text" class="form-control extra-load" ' +
-          `id="extra${ex}" placeholder="1800"></div></div>`);
+          `for="extra${ex}" class="col-sm-12 col-md-2">` +
+          `Extra Load W</label><div ` +
+          `class="col-sm-12 col-md-10"><input type="text" class="form-control` +
+          ` extra-load" id="extra${ex}" placeholder="1800"></div></div>`);
         };
       }
 

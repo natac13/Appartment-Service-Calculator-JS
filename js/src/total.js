@@ -22,18 +22,23 @@ $(document).ready(() => {
       let ex = 3;
       return function () {
         ex++;
-        $('#total-form').find('.unit-info').last()
-          .after(`<div class="form-group unit-info"><label ` +
-          `for="unit-demand-${ex}" class="col-sm-2">Unit Subtotal Demand</label>` +
-          `<div class="col-sm-2"><input type="text" class="form-control" ` +
+        $('#total-form').find('.unit-info').last().closest('.row')
+          .after(`<div class="row"><div class="form-group unit-info"><label ` +
+          `for="unit-demand-${ex}" class="col-sm-12 col-md-2">` +
+          `Unit ${ex} Subtotal Demand</label>` +
+          `<div class="col-sm-12 col-md-2"><input type="text" ` +
+          `class="form-control" ` +
           `id="unit-demand-${ex}" placeholder="10000" name="demand"></div>` +
-          `<label for="unit-count-${ex}" class="col-sm-2">Unit Count</label>` +
-          `<div class="col-sm-2"><input type="text" class="form-control" ` +
+          `<label for="unit-count-${ex}" class="col-sm-12 col-md-2">` +
+          `Unit ${ex} Count</label>` +
+          `<div class="col-sm-12 col-md-2"><input type="text" ` +
+          `class="form-control" ` +
           `id="unit-count-${ex}" placeholder="2" name="count"></div>` +
-          `<label for="unit-heat-${ex}" class="col-sm-2">Unit Heat Demand (W)` +
-          `</label><div class="col-sm-2"><input type="text" ` +
+          `<label for="unit-heat-${ex}" class="col-sm-12 col-md-2">` +
+          `Unit ${ex} Heat Demand (W)` +
+          `</label><div class="col-sm-12 col-md-2"><input type="text" ` +
           `class="form-control" id="unit-heat-${ex}" placeholder="8000" ` +
-          `name="heat"></div></div>`);
+          `name="heat"></div></div></div>`);
       };
     }
 
