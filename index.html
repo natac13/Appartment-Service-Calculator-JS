@@ -10,24 +10,28 @@
   <title>Natac's Appartment Service Calculator</title>
 
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,900'
+    rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 text-center">
       <header>
-        <h1>Natac's Service Calculator</h1>
+        <h1>Natac's Service Calculator for Apartment Buildings</h1>
         <h4>Based off the CEC 2012 Rule Book.</h4>
       </header>
     </div>
   </div> <!-- End header row -->
-
+</div>
+<div class="container app  text-center">
   <div class="row">
 <!--  ##############            Main input             #####################-->
 
-    <form role="form" id="unit_demands" autocomplete="on">
+    <form role="form" id="unit_demands" class="col-xs-11">
       <legend>Unit Area / Equipment Demands 8-202(1)</legend>
 
       <div class="row">
@@ -72,8 +76,10 @@
         </div>
       </div>
       <div class="row">
-        <button type="button" class='btn btn-info' id="add-load">
-          Add Extra Load</button>
+        <div class="col-xs-4 col-xs-offset-4">
+          <button type="button" class='btn btn-info btn-block' id="add-load">
+            <i class="glyphicon glyphicon-plus"></i> Extra Load</button>
+        </div>
       </div>
       <div class="row">
         <div class="form-group">
@@ -109,19 +115,19 @@
   </div> <!-- End form row -->
 
   <div class="row well">
-    <form role="form" id="suite_answer">
-      <div class="col-sm-12 col-md-1 ">
+    <form role="form" id="suite_answer" class="col-xs-11">
+      <div class="col-sm-12 col-md-2">
         <button type="button" class="btn btn-primary" id="check">
-          Check
+           <i class="glyphicon glyphicon-flash"></i> Check
         </button>
       </div>
       <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" id="user-answer"
           placeholder="Suite Ampacity (2 deciaml places)">
       </div>
-      <div class="col-sm-12 col-md-1 ">
+      <div class="col-sm-12 col-md-2 col-md-offset-1 ">
         <button type="button" class="btn btn-warning" id="answer">
-          Answer
+          <i class="glyphicon glyphicon-education"></i> Answer
         </button>
       </div>
       <div class="col-sm-12 col-md-3 ">
@@ -129,7 +135,7 @@
           id="display-suite-answer">
       </div>
     </form>
-    <div class="col-sm-12 col-md-4" id="congrats1">
+    <div class="col-xs-10 col-xs-offset-1" id="congrats1">
     </div>
   </div>
 
@@ -137,7 +143,7 @@
 <!--       ##############  Start of the Owners form ##############        -->
 
   <div class="row">
-    <form role="form" id="owner-form">
+    <form role="form" id="owner-form" class="col-xs-11">
       <legend>Owner Area Demands 8-202(4)</legend>
 
       <div class="row">
@@ -221,13 +227,13 @@
 
       <div class="row">
         <div class="form-group">
-          <div class="col-sm-12 col-md-4" id="install-wrapper">
-            <div class="radio-inline">
+          <div class="col-sm-12" id="install-wrapper">
+            <div class="radio-inline col-xs-2 col-xs-offset-4">
               <label for="conduit"><input type="radio" name="install"
                 id="conduit" value="conduit">Conduit
               </label>
             </div>
-            <div class="radio-inline">
+            <div class="radio-inline col-xs-2">
               <label for="freeair"><input type="radio" name="install" id="freeair"
                 value="freeair">Freeair
               </label>
@@ -242,19 +248,19 @@
   <p>The Owner's Panel is continuous, therefore this calculation will be base
 off a derating factor of 80% for wire in conduit and 70% for wire run in free
 air</p>
-    <form role="form" id="owner-button-form">
-      <div class="col-sm-12 col-md-1 ">
+    <form role="form" id="owner-button-form" class="col-xs-11">
+      <div class="col-sm-12 col-md-2">
         <button type="button" class="btn btn-primary" id="owner-check">
-          Check
+           <i class="glyphicon glyphicon-flash"></i> Check
         </button>
       </div>
       <div class="col-sm-12 col-md-3 ">
         <input type="text" class="form-control" id="owner-user-answer"
         placeholder="Owners Ampacity (2 decimal places)">
       </div>
-      <div class="col-sm-12 col-md-1 ">
+      <div class="col-sm-12 col-md-2 col-md-offset-1 ">
         <button type="button" class="btn btn-warning" id="owner-answer">
-          Answer
+          <i class="glyphicon glyphicon-education"></i> Answer
         </button>
       </div>
       <div class="col-sm-12 col-md-3 ">
@@ -262,7 +268,7 @@ air</p>
           id="display-owner-answer">
       </div>
     </form>
-    <div class="col-sm-12 col-md-4" id="congrats2">
+    <div class="col-xs-10 col-xs-offset-1" id="congrats2">
 
     </div>
   </div> <!-- end of owners row -->
@@ -270,7 +276,7 @@ air</p>
 <!--       ##############  Start of the Total form ##############        -->
 
   <div class="row">
-    <form role="form" id="total-form">
+    <form role="form" id="total-form" class="col-xs-11">
       <legend>Main Service 8-202(3)</legend>
       <p>Non-continuous Section (suites)</p>
       <div class="row">
@@ -353,37 +359,44 @@ air</p>
         </div>
       </div>
     </form>
+    <div class="row">
+      <div class="col-xs-3 col-xs-offset-4">
+        <button type="button" class='btn btn-info btn-block' id="add-unit">
+          <i class="glyphicon glyphicon-plus"></i> Another Unit</button>
+      </div>
+    </div>
   </div>
-      <button type="button" class='btn btn-info' id="add-unit">
-        Add Another Unit</button>
+
 
   <div class="row well">
-      <form role="form">
-        <div class="col-sm-12 col-md-1 ">
+      <form role="form" class="col-xs-11">
+        <div class="col-sm-12 col-md-2">
           <button type="button" class="btn btn-primary" id="total-check">
-            Check
+             <i class="glyphicon glyphicon-flash"></i> Check
           </button>
         </div>
         <div class="col-sm-12 col-md-3 ">
           <input type="text" class="form-control" id="total-user-answer"
             placeholder="Total Watts of Non-continuous Loads">
         </div>
-        <div class="col-sm-12 col-md-1 ">
+        <div class="col-sm-12 col-md-2 col-md-offset-1 ">
           <button type="button" class="btn btn-warning"
-          id="total-answer-btn">Answer</button>
+          id="total-answer-btn">
+            <i class="glyphicon glyphicon-education"></i> Answer
+          </button>
         </div>
         <div class="col-sm-12 col-md-3 ">
           <input type="text" class="form-control" readonly="readonly"
             id="display-total-answer">
         </div>
       </form>
-    <div class="col-sm-12 col-md-4" id="congrats3">
+    <div class="col-xs-10 col-xs-offset-1" id="congrats3">
 
     </div>
   </div>
 
   <div class="row continuous">
-    <form role="form" id="continuous-form">
+    <form role="form" id="continuous-form" class="col-xs-11">
       <label>Continuous Section (owner's) Apply 8-202(3)(e)</label>
       <p class='info'>
         Any loads that are to be taken at 100% (EV charging) will have to be
@@ -414,7 +427,7 @@ included by you the user afterwards</p>
         <div class="form-group">
           <label for="owner-sec-other-loads" class="col-sm-12 col-md-2">
             Owner's Other Loads
-            <span class='info'>
+            <span class="small">
               (includes everything that will get 8-202(3)(e) applied)
             </span>
           </label>
@@ -427,30 +440,69 @@ included by you the user afterwards</p>
     </form>
   </div>
   <div class="row well">
-        <form role="form" id="continuous-answer">
-          <div class="col-sm-1 ">
-            <button type="button" class="btn btn-primary" id="continuous-check">
-              Check
-            </button>
-          </div>
-          <div class="col-sm-3 ">
-            <input type="text" class="form-control" id="continuous-user-answer"
-              placeholder="continuous">
-          </div>
-          <div class="col-sm-1 ">
-            <button type="button" class="btn btn-warning" id="con-answer">
-              Answer
-            </button>
-          </div>
-          <div class="col-sm-3 ">
-            <input type="text" class="form-control" readonly="readonly"
-              id="display-continuous-answer">
-          </div>
-        </form>
-        <div class="col-sm-4" id="congrats4">
+    <form role="form" id="continuous-answer" class="col-xs-11">
+      <div class="col-sm-12 col-md-2">
+        <button type="button" class="btn btn-primary" id="continuous-check">
+           <i class="glyphicon glyphicon-flash"></i> Check
+        </button>
       </div>
+      <div class="col-sm-3 ">
+        <input type="text" class="form-control" id="continuous-user-answer"
+          placeholder="continuous">
+      </div>
+      <div class="col-sm-12 col-md-2 col-md-offset-1 ">
+        <button type="button" class="btn btn-warning" id="con-answer">
+          <i class="glyphicon glyphicon-education"></i> Answer
+        </button>
+      </div>
+      <div class="col-sm-12 col-md-3 ">
+        <input type="text" class="form-control" readonly="readonly"
+          id="display-continuous-answer">
+      </div>
+    </form>
+    <div class="col-xs-10 col-xs-offset-1" id="congrats4">
+
     </div>
+  </div>
 </div> <!-- End Container for body -->
+<footer class="container-fluid text-center">
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        Application By: Sean Campbell
+        <i class="glyphicon glyphicon-copyright-mark"></i>
+        <span class="year"></span>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Contact Info</h3>
+        <ul class="list-unstyled list-inline">
+          <li><a href="http://seancampbellnatac.com/" title="Portfolio page">
+          <i class="collecticon collecticon-house"></i>
+          </a></li>
+          <li><a href="https://natacseanc.wordpress.com/" title="Blog">
+          <i class="glyphicon glyphicon-bullhorn"></i>
+          </a></li>
+          <li><a href="https://github/natac13" title="GitHub Profile">
+          <i class="collecticon collecticon-github"></i>
+          </a></li>
+          <li><a href="https://twitter.com/natac1311" title="Twitter Profile`">
+          <i class="collecticon collecticon-twitter"></i>
+
+          </a></li>
+          <li><a href="https://ca.linkedin.com/pub/sean-campbell/b4/862/b90">
+            <i class="collecticon collecticon-linkedin"></i>
+          </a></li>
+          <li><a href="http://www.freecodecamp.com/natac13"
+            title="Free Code Camp Profile">
+            <img src="css/favicon.png" alt="FCC Logo" class="img-responsive">
+          </a></li>
+        </ul>
+    </div>
+  </div>
+</footer>
 
 
   <script src="js/jquery-1.11.3.min.js"></script>

@@ -103,7 +103,14 @@ $(document).ready(function () {
     $check = $('#check'),
         $answer = $('#answer'),
         $addLoad = $('#add-load'),
-        $congrats = $('#congrats1');
+        $congrats = $('#congrats1'),
+        now = new Date();
+
+    // set year for copyright
+
+    $('footer').find('.year').text(now.getFullYear());
+    console.log("now " + now);
+    console.log('year ' + now.getFullYear());
 
     /**
      * Finds all the extra-load classes from the DOM including newly created ones.
@@ -206,11 +213,11 @@ $(document).ready(function () {
     }
 
     /**
-     * Finds all the demand values from the DOM elements and assigns to an entries
-     * object. Fill the demands object with the calculated values using functions
-     * that represent the CEC Rules
-     * @return {number} the ampacity to 2 decimal places.
-     */
+    * Finds all the demand values from the DOM elements and assigns to an entries
+    * object. Fill the demands object with the calculated values using functions
+    * that represent the CEC Rules
+    * @return {number} the ampacity to 2 decimal places.
+    */
     function calculator() {
       // all values are string from text fields
       entries = {
@@ -263,10 +270,10 @@ $(document).ready(function () {
       }
     }
     /**
-     * Will call the calculator() function which makes the entries object and fills
-     * the demands object with the calculated demands
-     * @return {null}
-     */
+    * Will call the calculator() function which makes the entries object and fills
+    * the demands object with the calculated demands
+    * @return {null}
+    */
     function checkAnswer() {
       answer = calculator();
       var attempt = parseInt(entries.userAmswer, 10);
