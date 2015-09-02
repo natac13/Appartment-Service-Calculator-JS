@@ -19,7 +19,8 @@ body {
 
 header {
     padding-bottom: 2em;
-    color:#2E2E2E;
+    color: #232323;
+    text-shadow: -2px 2px 8px #989898;
 }
 
 header h1{
@@ -35,8 +36,6 @@ header h4 {
     letter-spacing: 0.05em;
     width: 40%;
     margin: 0 auto;
-    border: 2px solid #2e2e2e;
-    border-radius: 40%;
 }
 
 legend {
@@ -61,7 +60,7 @@ ul i {
 }
 
 ul i:hover {
-    color: #C98585;
+    color: #85C9AC;
 }
 
 .fcc{
